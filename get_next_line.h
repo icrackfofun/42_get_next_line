@@ -6,7 +6,7 @@
 /*   By: psantos- <psantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 14:41:04 by psantos-          #+#    #+#             */
-/*   Updated: 2025/04/24 17:02:35 by psantos-         ###   ########.fr       */
+/*   Updated: 2025/04/24 17:45:19 by psantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 
 char	*get_next_line(int fd);
 char	*ft_strchr(const char *str, int c);
-char	*ft_strtrim(char const *s1, char const *set);
 size_t	ft_strlen(const char *str);
 char	*ft_return_string(char **stash, char *string, char *temp);
 char	*ft_strjoin(char const *s1, char const *s2);
