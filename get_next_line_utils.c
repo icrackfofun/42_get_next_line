@@ -5,54 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: psantos- <psantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/23 14:40:54 by psantos-          #+#    #+#             */
-/*   Updated: 2025/04/24 17:03:30 by psantos-         ###   ########.fr       */
+/*   Created: 2025/04/26 15:13:47 by psantos-          #+#    #+#             */
+/*   Updated: 2025/04/26 19:23:44 by psantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-void	*ft_memset(void *ptr, int value, size_t num)
-{
-	size_t			i;
-	unsigned char	*p;
-
-	if (!ptr)
-		return (NULL);
-	p = (unsigned char *)ptr;
-	i = 0;
-	while (i < num)
-	{
-		p[i] = value;
-		i++;
-	}
-	return (ptr);
-}
-
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	void	*c;
-	size_t	total_size;
-
-	total_size = nmemb * size;
-	if (size && (total_size / size != nmemb))
-		return (NULL);
-	c = (void *)malloc(total_size);
-	if (!c)
-		return (NULL);
-	ft_memset(c, 0, total_size);
-	return (c);
-}
-
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
 
 char	*ft_strchr(const char *str, int c)
 {
@@ -74,17 +32,74 @@ char	*ft_strchr(const char *str, int c)
 	return (NULL);
 }
 
-char	*ft_strdup(const char *s)
+size_t	ft_strlcpy(char *dest, const char *src, size_t dstsize)
 {
-	char	*dup;
-	size_t	len;
+	size_t	i;
 
-	if (!s)
-		return (NULL);
-	len = ft_strlen(s);
-	dup = (char *)ft_calloc(len + 1, 1);
-	if (!dup)
-		return (NULL);
-	ft_strlcpy(dup, s, len + 1);
-	return (dup);
+	if (dstsize == 0)
+		return (ft_strlen(src));
+	i = 0;
+	while (src[i] != '\0' && i < dstsize - 1)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (ft_strlen(src));
+}
+
+void	ft_buffercpy(char **ptr, char *arr)
+{
+	char	*temp;
+	size_t	len_ptr;
+	size_t	len_arr;
+
+	len_ptr = *ptr ? ft_strlen(*ptr) : 0;
+	len_arr = ft_strlen(arr);
+	temp = *ptr;
+	*ptr = malloc(len_ptr + len_arr + 1);
+	if (!*ptr)
+	{
+		free(temp);
+		*ptr = NULL;
+		return ;
+	}
+	if (temp)
+	{
+		ft_strlcpy(*ptr, temp, len_ptr + 1);
+		free(temp);
+	}
+	ft_strlcpy(*ptr + len_ptr, arr, len_arr + 1);
+}
+
+void ft_trimbuffer(char *arr)
+{
+    int i = 0;
+    int j = 0;
+
+    while (arr[i] && arr[i] != '\n')
+        i++;
+    if (arr[i] == '\n')
+        i++;
+    while (arr[i])
+    {
+        arr[j++] = arr[i++];
+    }
+	while (j <= BUFFER_SIZE + 2)
+    	arr[j++] = '\0';
+}
+
+char *ft_return(char **ptr, char *arr, size_t read_bytes)
+{
+	if (read_bytes == (size_t)-1)
+	{
+		free(*ptr);
+		*ptr = NULL;
+		return (*ptr);
+	}
+	if (read_bytes == 0)
+		return (*ptr);
+	ft_buffercpy(ptr, arr);
+	ft_trimbuffer(arr);
+	return (*ptr);
 }

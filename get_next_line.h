@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: psantos- <psantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/23 14:41:04 by psantos-          #+#    #+#             */
-/*   Updated: 2025/04/24 17:45:19 by psantos-         ###   ########.fr       */
+/*   Created: 2025/04/26 16:36:21 by psantos-          #+#    #+#             */
+/*   Updated: 2025/04/26 19:26:58 by psantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,15 @@
 # include <stdio.h>
 
 #ifndef BUFFER_SIZE
-# define BUFFER_SIZE 42
+# define BUFFER_SIZE 10
 #endif
 
 char	*get_next_line(int fd);
 char	*ft_strchr(const char *str, int c);
 size_t	ft_strlen(const char *str);
-char	*ft_return_string(char **stash, char *string, char *temp);
-char	*ft_strjoin(char const *s1, char const *s2);
-void	*ft_calloc(size_t nmemb, size_t size);
 size_t	ft_strlcpy(char *dest, const char *src, size_t dstsize);
-void	ft_stashjoin(char **stash, char *buffer, char *temp);
-char	*ft_strdup(const char *s);
+void	ft_buffercpy(char **ptr, char *arr);
+void	ft_trimbuffer(char *arr);
+char	*ft_return(char **ptr, char *arr, size_t read_bytes);
 
 #endif
