@@ -6,7 +6,7 @@
 /*   By: psantos- <psantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 20:51:30 by psantos-          #+#    #+#             */
-/*   Updated: 2025/04/27 20:47:17 by psantos-         ###   ########.fr       */
+/*   Updated: 2025/04/28 11:08:44 by psantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 size_t	ft_linelen(const char *str)
 {
-	size_t i = 0;
+	size_t	i;
 
+	i = 0;
 	if (!str)
 		return (0);
 	while (str[i] && str[i] != '\n')
@@ -27,8 +28,9 @@ size_t	ft_linelen(const char *str)
 
 size_t	ft_strlen(const char *str)
 {
-	size_t i = 0;
+	size_t	i;
 
+	i = 0;
 	if (!str)
 		return (0);
 	while (str[i])
