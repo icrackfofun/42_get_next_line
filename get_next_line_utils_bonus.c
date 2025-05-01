@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: psantos- <psantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/26 15:13:47 by psantos-          #+#    #+#             */
-/*   Updated: 2025/04/30 14:27:46 by psantos-         ###   ########.fr       */
+/*   Created: 2025/04/30 14:22:34 by psantos-          #+#    #+#             */
+/*   Updated: 2025/04/30 14:53:28 by psantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_valread(char **string, ssize_t bytes, char *arr)
 {

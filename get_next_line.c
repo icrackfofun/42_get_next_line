@@ -6,7 +6,7 @@
 /*   By: psantos- <psantos-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 20:51:30 by psantos-          #+#    #+#             */
-/*   Updated: 2025/04/28 11:08:44 by psantos-         ###   ########.fr       */
+/*   Updated: 2025/04/30 13:53:21 by psantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*get_next_line(int fd)
 {
 	static char	buffer[BUFFER_SIZE + 1];
 	char		*string;
-	size_t		bytes_read;
+	ssize_t		bytes_read;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
@@ -58,7 +58,7 @@ char	*get_next_line(int fd)
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
 	}
 	if (bytes_read <= 0)
-		return (ft_valread(&string, bytes_read));
+		return (ft_valread(&string, bytes_read, buffer));
 	buffer[bytes_read] = '\0';
 	ft_buffercpy(&string, buffer);
 	ft_trimbuffer(buffer);
